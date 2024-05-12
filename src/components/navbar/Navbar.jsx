@@ -28,6 +28,7 @@ function Navbar() {
   const [anchorElUser, setAnchorElUser] = useState(null);
   const [value, setValue] = useState("");
   const [data, setData] = useState([]);
+  const [searchValue, setSearchValue] = useState("");
 
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
@@ -224,7 +225,9 @@ function Navbar() {
                   className="input-search"
                   placeholder="Type to Search..."
                 />
-                {value.trim() && <NavbarSearchModel data={data} />}
+                {value.trim() && (
+                  <NavbarSearchModel setSearchValue={searchValue} data={data} />
+                )}
               </div>
             </div>
             <PersonIcon className="icon" />
