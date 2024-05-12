@@ -11,12 +11,12 @@ const NavbarSearchModel = ({ data, setSearchValue }) => {
   if (!data || clicked) return null;
 
   let searchItems = data.map((el) => (
-    <Link key={el.id} to={`/single/${el.id}`} onClick={handleClick}>
-      <div className="searching__items">
+    <div key={el.id} className="searching__items">
+      <Link to={`/single/${el.id}`} onClick={handleClick}>
         <img src={el.thumbnail} width={50} height={50} alt="" />
         <h4>{el.title}</h4>
-      </div>
-    </Link>
+      </Link>
+    </div>
   ));
 
   return (

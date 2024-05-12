@@ -1,9 +1,7 @@
 import { defineConfig } from "vite";
-import { createVuePlugin } from "vite-plugin-vue";
+import react from "@vitejs/plugin-react";
 
+// https://vitejs.dev/config/
 export default defineConfig({
-  plugins: [createVuePlugin()],
-  server: {
-    historyApiFallback: true,
-  },
+  plugins: [react()],
 });

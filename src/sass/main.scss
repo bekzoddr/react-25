@@ -74,6 +74,9 @@ a.active{
     color: white !important;
 }
 .navbar__search__result{
+    display: flex;
+    flex-direction: column;
+    column-gap: 10px;
     position: absolute;
     top: calc(100% + 2px);
     left: 0;
@@ -86,13 +89,19 @@ a.active{
     overflow-y: auto;
 }
 .searching__items{
+    a{
     display: flex;
     align-items: center;
     gap: 10px;
-    img{
-        object-fit: cover;
-    }
-    h4{
+    background: rgb(50, 50, 60);
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
+    margin-bottom: 5px;
+}
+img{
+    object-fit: cover;
+}
+h4{
+        color: white !important;
         color: black;
         width: 300px;
         flex-wrap: wrap;
