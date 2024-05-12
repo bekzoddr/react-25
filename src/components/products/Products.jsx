@@ -1,8 +1,13 @@
 import React from "react";
 import { MdOutlineStar } from "react-icons/md";
-import { FaCartShopping, FaHeart } from "react-icons/fa6";
+import { FaCartShopping, FaHeart, FaRegHeart } from "react-icons/fa6";
 import { Container } from "@mui/material";
+import { useDispatch, useSelector } from "react-redux";
+import { Link } from "react-router-dom";
+import { toggleToWishes } from "../../context/wishlistSlice";
 const Products = ({ data }) => {
+  const dispatch = useDispatch();
+  const wishes = useSelector((state) => state.wishlist.value);
   return (
     <Container maxWidth="lg">
       <div className="products">
@@ -14,13 +19,22 @@ const Products = ({ data }) => {
                 <button className="cart">
                   <FaCartShopping />
                 </button>
-                <button className="like">
-                  <FaHeart />
+                <button
+                  onClick={() => dispatch(toggleToWishes(product))}
+                  className="like"
+                >
+                  {wishes.some((w) => w.id === product.id) ? (
+                    <FaHeart className="likes" />
+                  ) : (
+                    <FaRegHeart className="likes" />
+                  )}
                 </button>
               </div>
             </div>
             <div className="content">
-              <h2>{product.title}</h2>
+              <Link to={`/single/${product.id}`}>
+                <h2>{product.title}</h2>
+              </Link>
               <div className="star">
                 {[...Array(5)].map((_, index) => (
                   <MdOutlineStar key={index} />

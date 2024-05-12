@@ -2,6 +2,7 @@
 @import url("./components/navbar.scss");
 @import url("./components/hero.scss");
 @import url("./components/products.scss");
+@import url("./pages/singleRoute.scss");
 
 *{
     margin: 0;
@@ -47,5 +48,53 @@ body{
         line-height: 44px;
         letter-spacing: 0%;
         text-align: center;
+    }
+}
+.form{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+footer{
+    padding: 20px 148px;
+    background: rgb(11, 11, 11);
+    p{
+        color: rgb(255, 255, 255);
+        font-size: 16px;
+        font-weight: 500;
+        line-height: 125.5%;
+        letter-spacing: 0%;
+        text-align: center;
+    }
+}
+.search-box{
+    position: relative;
+}
+a.active{
+    color: white !important;
+}
+.navbar__search__result{
+    position: absolute;
+    top: calc(100% + 2px);
+    left: 0;
+    width: 100%;
+    height: auto;
+    max-height: 200px;
+    background-color: #fff;
+    box-shadow: 2px 5px 10px #0002;
+    padding: 12px;
+    overflow-y: auto;
+}
+.searching__items{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    img{
+        object-fit: cover;
+    }
+    h4{
+        color: black;
+        width: 300px;
+        flex-wrap: wrap;
     }
 }

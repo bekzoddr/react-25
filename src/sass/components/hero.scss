@@ -84,7 +84,8 @@
     background: rgb(246, 246, 246);
     width: 1100px;
     height: 377px;
-    padding: 30px 110px; 
+    padding: 30px 110px;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
 }
 .card__boxes{
     display: flex;
@@ -128,6 +129,9 @@
     }
 }
 @media (max-width: 1100px) {
+    .wrapper__form {
+        padding-block: 80px;
+    }
     body{
         overflow-x: hidden;
     }
@@ -141,6 +145,16 @@
         font-size: 14px !important;
     }
     
+}
+@media (max-width: 1000px) {
+    .wrapper__form {
+        padding-block: 60px;
+        gap: 100px;
+    }
+}
+.wrapper__form {
+    padding-block: 50px;
+    gap: 80px;
 }
 @media (max-width: 900px) {
     .card__boxes{
@@ -181,4 +195,54 @@
         font-size: 40px !important;
     }
 }
+}
+@media (max-width:500px) {
+    .hero__title{
+        h1{
+            font-size: 30px !important;
+        }
+    }    
+}
+
+
+@media (max-width: 900px) {
+}
+
+@media (max-width: 768px) {
+    .wrapper__form {
+        padding-block: 40px;
+        gap: 60px;
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .wrapper__title {
+        width: 100%;
+        text-align: center;
+    }
+
+    .search__input {
+        padding: 15px;
+    }
+}
+
+@media (max-width: 600px) {
+    .wrapper__form {
+        padding-block: 30px;
+        gap: 40px;
+    }
+}
+
+@media (max-width: 400px) {
+    .wrapper__form {
+        padding-block: 20px;
+        gap: 30px;
+    }
+}
+
+@media (max-width: 280px) {
+    .wrapper__form {
+        padding-block: 10px;
+        gap: 20px;
+    }
 }

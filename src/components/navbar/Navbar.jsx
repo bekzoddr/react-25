@@ -1,4 +1,5 @@
-import * as React from "react";
+import React from "react";
+import { useState, useEffect } from "react";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
@@ -13,15 +14,25 @@ import logo from "../../assets/images/nav__logo.svg";
 import PersonIcon from "@mui/icons-material/Person";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import SearchIcon from "@mui/icons-material/Search";
-const pages = ["Home", "Brands", "Resently Products", "Contact", "Account"];
+import { NavLink } from "react-router-dom";
+import Badge from "@mui/material/Badge";
+import { useSelector } from "react-redux";
+import axios from "../../api";
+import NavbarSearchModel from "./NavbarSearchModel";
+
+const pages = ["Brands", "Recently Products", "Contact", "Account"];
 
 function Navbar() {
-  const [anchorElNav, setAnchorElNav] = React.useState(null);
-  const [anchorElUser, setAnchorElUser] = React.useState(null);
+  const wishes = useSelector((state) => state.wishlist.value);
+  const [anchorElNav, setAnchorElNav] = useState(null);
+  const [anchorElUser, setAnchorElUser] = useState(null);
+  const [value, setValue] = useState("");
+  const [data, setData] = useState([]);
 
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
   };
+
   const handleOpenUserMenu = (event) => {
     setAnchorElUser(event.currentTarget);
   };
@@ -29,6 +40,18 @@ function Navbar() {
   const handleCloseNavMenu = () => {
     setAnchorElNav(null);
   };
+
+  useEffect(() => {
+    if (!value.trim()) return;
+    axios
+      .get(`/products/search?q=${value.trim()}`)
+      .then((res) => {
+        setData(res.data.products);
+      })
+      .catch((err) => {
+        console.error("Error fetching products:", err);
+      });
+  }, [value]);
 
   return (
     <AppBar
@@ -98,6 +121,7 @@ function Navbar() {
                 display: { xs: "block", md: "none" },
               }}
             >
+              <NavLink to={"/"}>Home</NavLink>
               {pages.map((page) => (
                 <MenuItem key={page} onClick={handleCloseNavMenu}>
                   <Typography textAlign="center">{page}</Typography>
@@ -134,6 +158,33 @@ function Navbar() {
               },
             }}
           >
+            <Button
+              sx={{
+                my: 2,
+                fontFamily: "Poppins",
+                fontSize: "16px",
+                fontWeight: 500,
+                lineHeight: "24px",
+                letterSpacing: "0%",
+                textAlign: "left",
+                display: "flex",
+                transition: "all 0.5s",
+                "&:hover": {
+                  color: "white",
+                  transition: "all 0.5s",
+                },
+              }}
+            >
+              <NavLink
+                style={{
+                  textDecoration: "none",
+                  color: "rgb(139, 142, 153)",
+                }}
+                to={"/"}
+              >
+                Home
+              </NavLink>
+            </Button>
             {pages.map((page) => (
               <Button
                 key={page}
@@ -168,13 +219,20 @@ function Navbar() {
                 </button>
                 <input
                   type="text"
+                  value={value}
+                  onChange={(e) => setValue(e.target.value)}
                   className="input-search"
                   placeholder="Type to Search..."
                 />
+                {value.trim() && <NavbarSearchModel data={data} />}
               </div>
             </div>
             <PersonIcon className="icon" />
-            <FavoriteBorderIcon className="icon" />
+            <NavLink to={"/wishlist"}>
+              <Badge badgeContent={wishes.length} color="primary">
+                <FavoriteBorderIcon className="icon" />
+              </Badge>
+            </NavLink>
           </div>
         </Toolbar>
       </Container>

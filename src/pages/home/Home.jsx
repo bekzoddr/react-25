@@ -50,12 +50,7 @@ const Home = () => {
           onClick={() => setCount((prevCount) => prevCount + 3)}
           disabled={loading}
         >
-          {loading ? (
-            <CircularProgress size={24} />
-          ) : (
-            // "loading..."
-            "See more"
-          )}
+          {loading ? <CircularProgress size={24} /> : "See more"}
         </Button>
       </div>
       <br />
