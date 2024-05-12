@@ -1,8 +1,1 @@
-# React + Vite
-
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
-
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+malumotla apidan olingan style 1:1 qilingan cardga like bossa wishlistga o'tadi titlega bossa single pagega o"tadi media sal pal qilingan search ishlidi search qilingan mahsulotga bossa single pagega o'tkazadi o'tgandan keyin search qilingan malumotla paneli yopiladi load more bor loadingla qo'yilgan
